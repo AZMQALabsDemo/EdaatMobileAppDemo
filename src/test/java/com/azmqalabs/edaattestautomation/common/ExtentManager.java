@@ -70,7 +70,8 @@ public class ExtentManager {
 	}
 	public static ExtentTest CreateExtentReportTest(ExtentReports extent, String cName, String scName, String browserName, String sTestID) {
         String sModuleName = "";
-        test = ExtentManager.createTestNew(sModuleName, cName+" : "+scName, "_" + sTestID + "_" + browserName);
+//        test = ExtentManager.createTestNew(sModuleName, cName+" : "+scName, "_" + sTestID + "_" + browserName);
+        test = ExtentManager.createTestNew(sModuleName, cName+" : "+scName, "_" + sTestID +  browserName);
         return (test);
     }
 

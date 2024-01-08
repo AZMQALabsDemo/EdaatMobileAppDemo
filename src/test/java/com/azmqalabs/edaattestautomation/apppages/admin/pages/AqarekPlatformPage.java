@@ -94,8 +94,9 @@ public class AqarekPlatformPage extends BasePage {
      			   this.getScreen();
 				   Thread.sleep(6000);
 				   	WebElement Home = driver.findElement(By.xpath(EdaatOR.Aqarek_HomePagetxt.toString()));
+			   	   Thread.sleep(1000);
 					VerifyValue1(Home.getText(),testdatamap.get("HomePage").toString());
-					   horizontalSwipeByPercentage(0.9, 0.1, 0.1);
+					horizontalSwipeByPercentage(0.9, 0.1, 0.1);
 
 					this.getScreen();
 				   Thread.sleep(2000);
@@ -126,7 +127,9 @@ public class AqarekPlatformPage extends BasePage {
          	   this.getScreen();
 			 test.log(Status.PASS, "* Tearms and Conditions Page is Pass * ");
 	         Log.ReportEvent("PASS", "Step4 : Verify Terms and condition Page is displayed Suceessfull");
-	     	}
+	         driver.quit();
+      	     Log.ReportEvent("Pass", "Step5 : Close app  Suceessful"); 	
+		}
 		catch (Exception e) {
 			test.log(Status.FAIL, "* Tearms and Conditions Page is Fail * ");
 		}

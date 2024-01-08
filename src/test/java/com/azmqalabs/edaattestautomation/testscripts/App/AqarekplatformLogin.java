@@ -71,8 +71,7 @@ public class AqarekplatformLogin {
 	    	this.testdatamap=testdatamap;
 	        this.TestScriptID=testdatamap.get("TestScriptID").toString();
 	        this.sBrowserTestData=testdatamap.get("Browser").toString();
-	  	    
-	    }
+	 	    }
 	    @Override
 	    public String toString(){
 	    	return String.format("%S", TestScriptID);
@@ -102,8 +101,7 @@ public class AqarekplatformLogin {
         	Pages.AqarekPlatformPage.MainPage(testdatamap,Log);
         	Pages.AqarekPlatformPage.Login(testdatamap,Log);
         	Pages.AqarekPlatformPage.Logout(testdatamap,Log);
-        	driver.quit();
-	       	Log.ReportEvent("Pass", "Step5 : Close app  Suceessful");
+        	
         }
 	    
 	    
@@ -119,16 +117,16 @@ public class AqarekplatformLogin {
 		  	  	initializeDriver=new InitializeDriver();
 //		  		driver=initializeDriver.initDriver(browserFromXML, testdatamap);
 		  	    driver=(AndroidDriver)initializeDriver.initDriver(browserFromXML, testdatamap);
-		  		driverEvent = new EventFiringWebDriver(driver);
-				eventListener = new webDriverEventListener(test);
-				driverEvent.register(eventListener);
+//		  		driverEvent = new EventFiringWebDriver(driver);
+//				eventListener = new webDriverEventListener(test);
+//				driverEvent.register(eventListener);
 //				this.driver=driverEvent;
 				// INITIALIZE PAGE FACTORY OBJECT
 				Pages=new Pages(driver,test);
 			    Log=new Log(driver,test);
 				DBUtil=new DBUtil(driver,test);
 				// LOG TEST MACHINE/USER DETAILS
-				Log.QAMachineInfo();
+//				Log.QAMachineInfo();
 		    }
 		// AFTER CLASS
 	    @AfterClass

@@ -1336,9 +1336,10 @@ public class Common {
 				FileUtils.copyFile(scrFile, new File(filePath));
 				File appScreenshot = new File("screenshots//");
 				String filePathScreenshot = appScreenshot.toString() + "//" + screenshotFile;// SA
-				test.info("details").addScreenCaptureFromPath(filePathScreenshot);
+			 // test.info("details").addScreenCaptureFromPath(filePathScreenshot);
+				test.addScreenCaptureFromPath(filePathScreenshot);
 
-				test.log(Status.INFO, "#TAKE SCREENSHOT"  + " * SCREENSHOT CAPTURED * ");
+//				test.log(Status.INFO, "#TAKE SCREENSHOT"  + " * SCREENSHOT CAPTURED * ");
 
 			} catch (Exception e) {
 				e.printStackTrace();
