@@ -1,4 +1,5 @@
 package com.azmqalabs.edaattestautomation.common;
+import java.io.File;
 import java.net.URL;
 import java.time.Duration;
 import java.util.Arrays;
@@ -22,10 +23,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import com.codoid.products.fillo.Recordset;
+import com.fasterxml.jackson.databind.deser.impl.ExternalTypeHandler.Builder;
+import com.github.dockerjava.api.model.Service;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import io.appium.java_client.service.local.flags.ServerArgument;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import net.lightbody.bmp.BrowserMobProxy;
 import net.lightbody.bmp.BrowserMobProxyServer;
@@ -35,7 +43,10 @@ import net.lightbody.bmp.proxy.CaptureType;
 public class InitializeDriver {
 
 	private WebDriver driver;
-	
+	public AppiumServiceBuilder builder;
+	public AppiumDriverLocalService service;
+//	String node_js_Path="C:\\Program Files\\nodejs\\node.exe";
+//    String appium_js_path = "C:\\Users\\USER\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js";
 	public WebDriver initDriver(String browser, Map<Object, Object> testdatamap) throws Exception
 	{
 		String sDriverType=Config.Get("DRIVER.TYPE");
@@ -64,7 +75,7 @@ public class InitializeDriver {
 				capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, mobSet.getField("MobPlatformVersion").toString());
 				capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, mobSet.getField("MobDeviceName").toString());
 				capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
-				capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION,mobSet.getField("MobAppiumVersion").toString());
+//				capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION,mobSet.getField("MobAppiumVersion").toString());
 				if(browser.equalsIgnoreCase("Chrome")) {
 					ChromeOptions options=new ChromeOptions();
 					capabilities.setCapability(ChromeOptions.CAPABILITY, options);
@@ -93,7 +104,7 @@ public class InitializeDriver {
 				capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME,mobSet.getField("MobPlatformName").toString());
 				capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, mobSet.getField("MobPlatformVersion").toString());
 				capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, mobSet.getField("MobDeviceName").toString());
-				capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION,mobSet.getField("MobAppiumVersion").toString());
+//				capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION,mobSet.getField("MobAppiumVersion").toString());
 				capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
 				if(browser.equalsIgnoreCase("Chrome")) {
 					ChromeOptions options=new ChromeOptions();
@@ -117,6 +128,21 @@ public class InitializeDriver {
 				capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, mobSet.getField("MobDeviceName").toString());
 				capabilities.setCapability("appPackage", mobSet.getField("appPackage").toString());
 				capabilities.setCapability("appActivity", mobSet.getField("appActivity").toString());
+
+				
+//				builder=new AppiumServiceBuilder();
+//				builder.usingDriverExecutable(new File(node_js_Path));
+//				builder.withAppiumJS(new File(appium_js_path));
+//				builder.withIPAddress("127.0.0.1");
+//				builder.usingPort(4723);
+//				builder.withArgument (GeneralServerFlag.LOG_LEVEL, "info");
+//				service =AppiumDriverLocalService.buildService(builder);
+//				
+//				service.start();
+//				builder.withStartUpTimeOut(180000, TimeUnit.SECONDS);
+               
+
+				
 			}
 			if(Config.Get("MOB.platformName").equalsIgnoreCase("iOSWeb")){
 

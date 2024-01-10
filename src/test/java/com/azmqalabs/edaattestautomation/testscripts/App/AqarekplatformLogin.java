@@ -1,5 +1,6 @@
 package com.azmqalabs.edaattestautomation.testscripts.App;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,8 @@ import com.mysql.cj.x.protobuf.MysqlxConnection.Capabilities;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 // TEST LISTENER
 @Listeners(com.azmqalabs.edaattestautomation.common.TestListener.class)
@@ -52,6 +55,10 @@ public class AqarekplatformLogin {
 	  private InitializeDriver initializeDriver;
 	  private EventFiringWebDriver driverEvent;
 	  private webDriverEventListener eventListener;
+	  
+	  public AppiumServiceBuilder builder;
+	  public AppiumDriverLocalService service;
+	
 	  Map<Object, Object> testdatamap;
 	  Map<Object, Object> testresultsmap;
 	  private String TestScriptID="";
@@ -97,17 +104,19 @@ public class AqarekplatformLogin {
 	    @Test
 	    public void myTest() throws InterruptedException, Exception{
 	
+	    	
         	Pages.AqarekPlatformPage.launchApplication(testdatamap,Log);   
         	Pages.AqarekPlatformPage.MainPage(testdatamap,Log);
         	Pages.AqarekPlatformPage.Login(testdatamap,Log);
         	Pages.AqarekPlatformPage.Logout(testdatamap,Log);
-        	
+
         }
 	    
 	    
-		// BEFORE CLASS METHOD - BROWSER INITIALIZATION
+		// BEFORE CLASS METHOD - BROWSER INITIALIZATImON
 		   @BeforeClass
 		    public void beforeClass() throws Exception {
+
 		        browserFromXML=sBrowserTestData;
 		        // EXTENT REPORT
 		        extent=ExtentManager.CreateExtentReportExtent();
@@ -131,7 +140,10 @@ public class AqarekplatformLogin {
 		// AFTER CLASS
 	    @AfterClass
 	    public void afterClass() {
+			
+
 	        extent.flush();
+
 	    }
 	    
 		// AFTER TEST - NEED TO USE FOR LOGIN/LOGOUT HANDLING PURPOSE

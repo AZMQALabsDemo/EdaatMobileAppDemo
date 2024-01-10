@@ -64,34 +64,33 @@ public class AqarekPlatformPage extends BasePage {
 	}
 	
 	public void Login(Map<Object,Object> testdatamap, Log Log){
-	       try 
+	       try
 	     		{
-			   	   
-			       AndroidClickUsingActions(EdaatOR.Aqarek_Myrequestmenu.toString());
-     			   this.getScreen();
-     			   AndroidEdit(EdaatOR.Aqarek_MobileNotextfield.toString(), testdatamap.get("MobileNo").toString());
-     		    	AndroidClickUsingActions(EdaatOR.Aqarek_SigninBtn.toString());
-     			   this.getScreen();
-//     			   String OTP = DBConnect("");    			    
-//     			    char OTP1 = OTP.charAt(0);
-//     			    char OTP2 = OTP.charAt(1);
-//     			    char OTP3 = OTP.charAt(2);
-//     			    char OTP4 = OTP.charAt(3);
-//     			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield1.toString(), String.valueOf(OTP1));
-//     			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield2.toString(), String.valueOf(OTP2));
-//     			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield3.toString(), String.valueOf(OTP3));
-//     			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield4.toString(), String.valueOf(OTP4));
-     			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield1.toString(), testdatamap.get("OTP1").toString());
-    			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield2.toString(), testdatamap.get("OTP2").toString());
-    			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield3.toString(), testdatamap.get("OTP3").toString());
-    			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield4.toString(), testdatamap.get("OTP4").toString());
+			   AndroidClickUsingActions(EdaatOR.Aqarek_Myrequestmenu.toString());
+  			   this.getScreen();
+  			   AndroidEdit(EdaatOR.Aqarek_MobileNotextfield.toString(), testdatamap.get("MobileNo").toString());
+  		    	AndroidClickUsingActions(EdaatOR.Aqarek_SigninBtn.toString());
+  			   this.getScreen();
+//  			   String OTP = DBConnect("");    			    
+//  			    char OTP1 = OTP.charAt(0);
+//  			    char OTP2 = OTP.charAt(1);
+//  			    char OTP3 = OTP.charAt(2);
+//  			    char OTP4 = OTP.charAt(3);
+//  			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield1.toString(), String.valueOf(OTP1));
+//  			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield2.toString(), String.valueOf(OTP2));
+//  			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield3.toString(), String.valueOf(OTP3));
+//  			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield4.toString(), String.valueOf(OTP4));
+  			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield1.toString(), testdatamap.get("OTP1").toString());
+ 			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield2.toString(), testdatamap.get("OTP2").toString());
+ 			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield3.toString(), testdatamap.get("OTP3").toString());
+ 			   AndroidEdit(EdaatOR.Aqarek_OTPtextfield4.toString(), testdatamap.get("OTP4").toString());
 				   this.getScreen();
-    		       AndroidClickUsingActions(EdaatOR.Aqarek_OTPConfirm.toString());
-    		       AndroidClickUsingActions(EdaatOR.Aqarek_MoreMenu.toString());
+ 		       AndroidClickUsingActions(EdaatOR.Aqarek_OTPConfirm.toString());
+ 		       AndroidClickUsingActions(EdaatOR.Aqarek_MoreMenu.toString());
 			   	   Thread.sleep(2000);
 			       scroll(0.5,0.8,0.5,0.2);
-    		       AndroidClickUsingActions(EdaatOR.Aqarek_EngLanguage.toString());
-     			   this.getScreen();
+ 		       AndroidClickUsingActions(EdaatOR.Aqarek_EngLanguage.toString());
+  			   this.getScreen();
 				   Thread.sleep(6000);
 				   	WebElement Home = driver.findElement(By.xpath(EdaatOR.Aqarek_HomePagetxt.toString()));
 			   	   Thread.sleep(1000);
@@ -104,8 +103,7 @@ public class AqarekPlatformPage extends BasePage {
 		           Log.ReportEvent("PASS", "Step3 : Verify Aqarek Login is Suceessfull");
 		           
 		           
-		           
-	 			} 
+	 			}
 	       catch (Exception e) {
 			test.log(Status.FAIL, "* Login to the application is Fail * ");
 		}

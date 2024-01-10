@@ -1,5 +1,8 @@
 package com.azmqalabs.edaattestautomation.common;
 
+import java.io.File;
+import java.util.concurrent.TimeUnit;
+
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ISuite;
@@ -8,11 +11,17 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 import com.aventstack.extentreports.ExtentTest;
 
 public class TestListener implements ITestListener, ISuiteListener, IInvokedMethodListener {
-
+	private  AppiumDriverLocalService Service;
+	private AppiumServiceBuilder builder;
+    private static AppiumDriverLocalService appiumDriverLocalService;
+	
 	public ExtentTest test;
 	public String InfoFontColorPrefix = "<span ><font color='purple';font-size:10%; line-height:20px>";
 	public String InfoFontColorSuffix = "</font></span>";
@@ -65,15 +74,26 @@ public class TestListener implements ITestListener, ISuiteListener, IInvokedMeth
 		// TODO Auto-generated method stub
 
 	}
-
+	public  void appiumServer() {
+		builder = new AppiumServiceBuilder();
+		builder.usingDriverExecutable(new File("C:\\Program Files\\nodejs\\node.exe"));
+		builder.withAppiumJS(new File("C:\\Users\\USER\\AppData\\Local\\Programs\\Appium\\resources\\app\\node_modules\\appium\\build\\lib\\main.js"));
+		builder.withIPAddress("127.0.0.1");
+		builder.usingPort(4723);
+		builder.withArgument(GeneralServerFlag.LOG_LEVEL,"info");
+		Service=AppiumDriverLocalService.buildService(builder);	
+		builder.withStartUpTimeOut(180000, TimeUnit.SECONDS);
+		Service.start();
+		
+	}
 	public void onStart(ISuite suite) {
-		// TODO Auto-generated method stub
-
+		appiumServer();
+		System.out.println("Appium Server starts");
 	}
 
 	public void onFinish(ISuite suite) {
-		// TODO Auto-generated method stub
-
+		Service.stop();
+		System.out.println("Appium Server stops");
 	}
 
 	private static String getTestMethodName(ITestResult result) {
